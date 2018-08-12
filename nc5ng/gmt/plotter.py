@@ -1,6 +1,13 @@
-"""nc5ng.gmt.plotter
+"""
+GMT Plotter
+-----------
 
-module that defines GMT Plotting Utilities for nc5ng conversions
+GMTPlotter forms a loose wrapper around ``gmt.Figure`` object, that constructs plots from embedded gmt options inside ``nc5ng`` objects (meta-api, ``object.gmt_meta``)
+
+.. autoclass:: GMTPlotter
+  :members:
+
+
 """
 
 from numpy import array
@@ -11,7 +18,9 @@ from .options import GMTOptions, PLOT_OPTS
 class GMTPlotter(object):
     """GMTPlotter
 
-    Wrapper for GMT/Python plotter
+    Wrapper for GMT/Python Plotter
+
+    
 
     """
 
@@ -32,6 +41,24 @@ class GMTPlotter(object):
 
     @staticmethod
     def plot_conversion(conversion, coverage='all', vector='all', plotter=None, **kwargs):
+        """ Static Method to Plot an ``nc5ng.nc5data.Conversion`` 
+
+        Plotting options are Applied in the order
+
+        1. GMTPlotter configured or default options
+        2. Conversion configured options ``Conversion.gmt_meta``
+        3. Data Set Options ``PointData.gmt_meta``
+        4. Keyword overrides (full option name)
+        5. Keyowrd overrides (single letter GMT Style arguments) 
+        
+        :param conversion: Conversion data
+        :param coverage: Coverage files (no file extension), to plot.
+          Can be list of names (``coverage = ['cvacdlat','cvacdlon',]``), single file name (``coverage = 'cvacdlat'``), ``None``, or ``'all'``
+        :param vector: Vector files (no file extension) to plot. Can be list of names, single file name, ``None``, or ``'all'``. 
+        :param plotter: plotter to use, if ``None`` one will be created and returned
+
+
+        """
         if plotter is None:
             plotter = GMTPlotter()
             

@@ -1,6 +1,13 @@
-"""nc5ng.gmt.options
+"""
+GMT Options
+-----------
 
-module that defines GMT Option Mapping, default options.
+GMTOptions form a loose wrapper on the GMT command line arguments and GMT/Python shorthands
+
+It is a subtype of ``dict`` but has additional properties for creating appropirate GMT arguments
+
+.. autoclass:: nc5ng.gmt.GMTOptions
+
 """
 
 
@@ -81,7 +88,7 @@ def mk_arg_prop(FILTER_LIST):
     return prop_get
 
 class GMTOptions(dict):
-    """GMTOptions is a decorated dictionary to wrap GMT/Python Keyword options
+    """GMTOptions are decorated dictionaries to wrap GMT/Python Keyword options
     
     GMTOptions takes keywords or other dictionary to construct gmt plot options for 
     `basemap`, `coast`, `plot` via properties `GMTOptions.basemap`, `.coast` `.plot`
