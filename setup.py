@@ -1,6 +1,6 @@
 from setuptools import setup
 from os import environ
-VERSION= environ.get('NC5NG_VERSION', "0.0.4")
+VERSION= environ.get('NC5NG_VERSION', "0.1.0")
 PKG_INFO= {
     'packages':['nc5ng.gmt', 'nc5ng.types'],
     'name':"nc5ng-common",
